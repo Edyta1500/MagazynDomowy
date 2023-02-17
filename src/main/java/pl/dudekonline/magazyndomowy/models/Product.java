@@ -15,8 +15,8 @@ public class Product {
     private Integer id;
 
     @NotBlank(message = "Pole jest wymagane")
-    @Size(min = 2,max = 200, message = "Nazwa musi mieć od 2 do 200 znaków")
-    @Column(length = 200, nullable = false)
+    @Size(min = 2,max = 100, message = "Nazwa musi mieć od 2 do 100 znaków")
+    @Column(length = 100, nullable = false)
     private String name;
 
     @NotBlank(message = "Pole jest wymagane")
@@ -26,30 +26,35 @@ public class Product {
 
     private Integer amount;
 
-    @NotBlank(message = "Pole jest wymagane")
-    @Size(min = 1,max = 3, message = "Wybierz jednostkę z listy")
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Units unit;
+
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private List<Image> image;
-    @ManyToMany
-    private List<Category> category;
+
+    @NotBlank(message = "Pole jest wymagane")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @NotBlank(message = "Pole jest wymagane")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "unit_id")
+    private Units units;
 
     public Product() {
 
     }
 
-    public Product(Integer id, String name, String description, Integer amount,Units unit,  List<Image> image, List<Category> category) {
+    public Product(Integer id, String name, String description, Integer amount,Units units,  List<Image> image,Category category ) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.amount = amount;
-        this.unit = unit;
+        this.units = units;
         this.image = image;
         this.category = category;
+
     }
 
     public Integer getId() {
@@ -84,11 +89,11 @@ public class Product {
         this.image = image;
     }
 
-    public List<Category> getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(List<Category> category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }
