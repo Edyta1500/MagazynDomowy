@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<div th:replace="fragments/menu"></div>
+<div class="container mt-3"></div>
+<h1>Lista kategorii</h1>
+<ul>
+    <li th:each="category : ${categories}">
+        <a th:href="${'/category/' + category.getId()}" th:text="${category.getName()}"}></a>
+    </li>
+</ul>
+
+<div th:replace="fragments/scripts"></div>
+</body>
+</html>
