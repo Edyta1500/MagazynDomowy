@@ -1,6 +1,7 @@
 package pl.dudekonline.magazyndomowy.controllers;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.dudekonline.magazyndomowy.services.categories.CategoryService;
 import pl.dudekonline.magazyndomowy.services.products.ProductService;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/categories")
 class CategoryController {
@@ -18,10 +20,7 @@ class CategoryController {
     private final CategoryService categoryService;
     private final ProductService productService;
 
-    public CategoryController(CategoryService categoryService, ProductService productService) {
-        this.categoryService = categoryService;
-        this.productService = productService;
-    }
+
 
     @GetMapping
         public String showCategories(Model model){

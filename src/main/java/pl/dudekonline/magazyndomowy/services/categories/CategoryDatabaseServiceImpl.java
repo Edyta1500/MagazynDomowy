@@ -1,5 +1,6 @@
 package pl.dudekonline.magazyndomowy.services.categories;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.dudekonline.magazyndomowy.models.Category;
 import pl.dudekonline.magazyndomowy.repositories.CategoryRepository;
@@ -7,15 +8,11 @@ import pl.dudekonline.magazyndomowy.repositories.CategoryRepository;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class CategoryDatabaseServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
-
-    public CategoryDatabaseServiceImpl(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
-
 
     @Override
     public List<Category> findAll() {

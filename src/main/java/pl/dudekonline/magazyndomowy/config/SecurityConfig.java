@@ -22,9 +22,8 @@ class SecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .antMatchers("/", "/contact","/categories",
                                 "/category", "/category/{id}", "/product/{id}",
-                                // todo: danger!
-                                "/css/**", "/images/**", "/js/**",
-                                "/api/**" //todo danger!
+                                "/css/**", "/images/**", "/js/**"
+
                         ).permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login").permitAll())

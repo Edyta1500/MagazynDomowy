@@ -1,11 +1,20 @@
 package pl.dudekonline.magazyndomowy.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Setter
+@Getter
+
 @Entity
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -14,20 +23,5 @@ public class Image {
     @Column(nullable = false)
     private String url;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }
 

@@ -1,7 +1,10 @@
 package pl.dudekonline.magazyndomowy.models;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
 @Entity
 public class Units {
     @Id
@@ -11,8 +14,6 @@ public class Units {
     @Column(nullable = false, length = 10)
     private String name;
 
-    public Units() {
 
-    }
 
 }

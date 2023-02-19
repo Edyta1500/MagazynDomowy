@@ -1,9 +1,17 @@
 package pl.dudekonline.magazyndomowy.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Setter
+@Getter
 @Entity
 public class Category {
     @Id
@@ -18,9 +26,6 @@ public class Category {
     @JoinColumn(name="image_id")
     private Image image;
 
-    public Category() {
-
-    }
 
     public Category(Integer id, String name, String description) {
         this.id = id;
@@ -28,21 +33,6 @@ public class Category {
         this.image = image;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 
 }
